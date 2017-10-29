@@ -1,13 +1,20 @@
 {
   "presets": [
-    ["env", {
-      "useBuiltIns": true,
-      "targets": {
-        "node": "current"
+    "flow",
+    [
+      "env",
+      {
+        "useBuiltIns": false,
+        "modules": "commonjs",
+        "targets": {
+          "node": "current",
+          "loose": true
+        }
       }
-    }]
+    ]
   ],
   "plugins": [
+    "transform-runtime",
     "transform-object-rest-spread",
     "transform-class-properties"
   ]
