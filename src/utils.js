@@ -4,12 +4,12 @@ import path from 'path';
 import fs from 'fs';
 import Promise from 'bluebird';
 
-type DependencyType = {
+export type DependencyType = {
   name: string,
   version: string,
 };
 
-type PackageJSONType = {
+export type PackageJSONType = {
   name: string,
   dependencies: DependencyType,
 };

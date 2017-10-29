@@ -1,6 +1,13 @@
+// @flow
+
 import DependencyGraph from '../lib/DependencyGraph';
 
-export default async function checkForUpdate(packageDefinition, prompt) {
+import type {PackageJSONType} from '../utils';
+
+export default async function checkForUpdate(
+  packageDefinition: PackageJSONType,
+  prompt: any
+) {
   const result = await prompt(['library name', 'version']);
   const packageToUpdate = result['library name'];
   const version = result.version;
