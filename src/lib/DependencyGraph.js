@@ -4,7 +4,7 @@ import semver from 'semver';
 import Package from './Package';
 import PackageVersions from './PackageVersions';
 
-class DependencyGraph {
+export default class DependencyGraph {
   dependencyMap: Map<string, string>;
   dependencies: Array<PackageVersions>;
   constructor(dependencyMap: Map<string, string>) {
@@ -55,5 +55,3 @@ class DependencyGraph {
     return packagesToUpdate;
   }
 }
-
-module.exports = DependencyGraph;
