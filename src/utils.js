@@ -18,8 +18,13 @@ const readFileAsync = Promise.promisify(fs.readFile);
 
 export async function loadPkgJSON(fileName: string): ?PackageJSONType {
   const pkgJSONFile = path.join(process.env.PWD, fileName);
-  const rawPkgJson = await readFileAsync(pkgJSONFile);
-  return JSON.parse(rawPkgJson.toString('utf-8'));
+  try {
+    const rawPkgJson = await readFileAsync(pkgJSONFile);
+    return JSON.parse(rawPkgJson.toString('utf-8'));
+  } catch (e) {
+    console.log(e.message);
+    return null;
+  }
 }
 
 export function noop() {}

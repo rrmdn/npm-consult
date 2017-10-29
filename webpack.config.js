@@ -8,23 +8,21 @@ module.exports = {
     filename: 'dist/index.js',
   },
   target: 'node',
-  externals: [
-    nodeExternals(),
-  ],
+  externals: [nodeExternals()],
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         enforce: 'pre',
         use: ['remove-flow-types-loader'],
         exclude: /node_modules/,
       },
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
