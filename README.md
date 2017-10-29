@@ -29,7 +29,11 @@ Managing dependencies is a repetitive task that doing it manually is practically
 
 #### Solution
 
-NPM Consult 
+NPM Consult helps you analyze your dependency graph and give you suggestion on which package
+to update or rollback your dependency graph.
 
 ### Core Components
 
+1. Dependency Analyzer
+2. Update Assistant
+3. Rollback Assistant
