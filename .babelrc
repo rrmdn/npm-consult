@@ -1,14 +1,17 @@
 {
   "presets": [
-    ["env", {
-      "useBuiltIns": true,
-      "targets": {
-        "node": "current"
+    "flow",
+    [
+      "env",
+      {
+        "useBuiltIns": false,
+        "modules": false,
+        "targets": {
+          "node": "current",
+          "loose": true
+        }
       }
-    }]
+    ]
   ],
-  "plugins": [
-    "transform-object-rest-spread",
-    "transform-class-properties"
-  ]
+  "plugins": ["transform-object-rest-spread", "transform-class-properties"]
 }
