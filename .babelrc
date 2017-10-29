@@ -5,7 +5,7 @@
       "env",
       {
         "useBuiltIns": false,
-        "modules": false,
+        "modules": "commonjs",
         "targets": {
           "node": "current",
           "loose": true
@@ -13,5 +13,9 @@
       }
     ]
   ],
-  "plugins": ["transform-object-rest-spread", "transform-class-properties"]
+  "plugins": [
+    "transform-runtime",
+    "transform-object-rest-spread",
+    "transform-class-properties"
+  ]
 }
