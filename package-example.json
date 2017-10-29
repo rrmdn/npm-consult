@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "react": "0.14.8",
-    "react-datepicker": "0.57.0",
+    "react-datepicker": "0.40.0",
     "shortid": "2.2.8"
   }
 }
