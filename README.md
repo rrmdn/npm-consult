@@ -2,38 +2,30 @@
 
 Want to update your package's dependency but too tired to check the availability?
 
-![expanding brain](https://github.com/rromadhoni/npm-consult/raw/master/npm-consult.jpeg "Expanding Brain")
+![expanding brain](https://github.com/rromadhoni/npm-consult/raw/master/docs/images/npm-consult.jpeg "Expanding Brain")
 
-## Develop
+## Running NPM Consult
 
-1. Run `npm install`
-2. Run `npm run develop`
-3. On another tab, run `npm start`
+Clone this project and then`cd` to the cloned directory. 
 
-## Product Requirements Document
+Run:
 
-### Abstract
+    $ npm install
+    $ npm run dev    
+    $ npm start -- update <package>@<version> [-p [package='package.json']]
 
-> NPM Consult is a tool to manage your project dependencies and provide assistance for updating
-your dependency graph to fit your specific  target package version.
+*For testing, you can specify the package.json file for NPM Consult to
+analyze the dependency graph, you can use the `-p <package-file>` options
+for the `update` command, otherwise it will use the `package.json` file on 
+the current active directory.
 
-### Objectives
+    $ npm start -- update react@15.6.0 -p example/package-example.json
 
-#### Who
+## Contributing
 
-For developers who have issues on keeping their dependencies up to date.
+You can contribute to this project by writing unit tests and extend the
+feature of this project.
 
-#### Problem
+You can edit files inside the [src](src) directory, then compile using
+`npm run dev`, or you can use watcher by running `npm run watch`.
 
-Managing dependencies is a repetitive task that doing it manually is practically inefficient.
-
-#### Solution
-
-NPM Consult helps you analyze your dependency graph and gives you suggestions on which package
-to update or rollback your dependency graph.
-
-### Core Components
-
-1. Dependency Analyzer
-2. Update Assistant
-3. Rollback Assistant
