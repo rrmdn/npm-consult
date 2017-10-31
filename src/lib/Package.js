@@ -17,11 +17,10 @@ export default class Package {
     const dependencies = Object.assign(
       {},
       currentPackage.dependencies || {},
-      currentPackage.devDependencies
+      currentPackage.devDependencies,
     );
-    this.dependencies = Object.keys(dependencies || {}).map(
-      key => new Package(key, dependencies[key])
-    );
+    this.dependencies = Object.keys(dependencies || {})
+      .map(key => new Package(key, dependencies[key]));
     return true;
   }
   toString() {
@@ -32,7 +31,7 @@ export default class Package {
   }
   dependsOn(packageToUpdate: string): boolean {
     return this.dependencies.length
-      ? this.dependencies.every(pkg => pkg.getName() === packageToUpdate)
+      ? this.dependencies.some(pkg => pkg.getName() === packageToUpdate)
       : false;
   }
 }
