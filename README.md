@@ -2,7 +2,7 @@
 
 Want to update your package's dependency but too tired to check the availability?
 
-![expanding brain](https://github.com/rromadhoni/npm-consult/raw/master/npm-consult.jpeg "Expanding Brain")
+![npm consult demo](https://github.com/rromadhoni/npm-consult/raw/master/consult-demo.gif "npm consult demo")
 
 ## Develop
 
