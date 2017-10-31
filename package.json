@@ -27,6 +27,18 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.57.3"
+    "flow-bin": "^0.57.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.7.4"
+  },
+  "lint-staged": {
+    "gitDir": "../",
+    "linters": {
+      "*.js": [
+        "./node_modules/.bin/prettier --write --bracket-spacing=false --single-quote=true --jsx-bracket-same-line=true --trailing-comma=es5 --print-width=80",
+        "git add"
+      ]
+    }
   }
 }
