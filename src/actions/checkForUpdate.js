@@ -10,9 +10,13 @@ export default async function checkForUpdate(
   packageDefinition: PackageJSONType
 ) {
   const { packageToUpdate } = await inquirer.prompt([{
-    type: 'input',
+    type: 'list',
     name: 'packageToUpdate',
-    message: 'Enter the package name you want to update:',
+    message: 'Which package do you want to update?',
+    choices: Object.keys(packageDefinition.dependencies).map(key => ({
+      name: key,
+      value: key,
+    })),
   }]);
   console.log('Loading available versions of', packageToUpdate);
   const packageVersionList = await packageVersion(packageToUpdate);
