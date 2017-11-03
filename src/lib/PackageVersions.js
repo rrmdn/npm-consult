@@ -19,7 +19,7 @@ class PackageVersions {
   }
   dependsOn(packageToUpdate: string): boolean {
     return this.versions.length
-      ? this.versions.every(pkg => pkg.dependsOn(packageToUpdate))
+      ? this.versions.some(pkg => pkg.dependsOn(packageToUpdate))
       : false;
   }
 }
