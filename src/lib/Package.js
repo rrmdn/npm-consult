@@ -17,10 +17,11 @@ export default class Package {
     const dependencies = Object.assign(
       {},
       currentPackage.dependencies || {},
-      currentPackage.devDependencies,
+      currentPackage.devDependencies
     );
-    this.dependencies = Object.keys(dependencies || {})
-      .map(key => new Package(key, dependencies[key]));
+    this.dependencies = Object.keys(dependencies || {}).map(
+      key => new Package(key, dependencies[key])
+    );
     return true;
   }
   toString() {

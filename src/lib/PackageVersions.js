@@ -11,7 +11,9 @@ class PackageVersions {
   }
   async resolveVersions() {
     const versions = await packageVersion(this.name);
-    this.versions = Array.from(versions).map(version => new Package(this.name, version));
+    this.versions = Array.from(versions).map(
+      version => new Package(this.name, version)
+    );
     await Promise.all(this.versions.map(pkg => pkg.resolveDependencies()));
     return true;
   }

@@ -11,14 +11,17 @@ export default class DependencyGraph {
     this.dependencyMap = dependencyMap;
   }
   async resolveDependencyGraph() {
-    this.dependencies = Array.from(this.dependencyMap.keys())
-      .map(packageName => new PackageVersions(packageName));
-    await Promise.all(this.dependencies.map(pkgVersion => pkgVersion.resolveVersions()));
+    this.dependencies = Array.from(this.dependencyMap.keys()).map(
+      packageName => new PackageVersions(packageName)
+    );
+    await Promise.all(
+      this.dependencies.map(pkgVersion => pkgVersion.resolveVersions())
+    );
     return true;
   }
   removePackagesWithout(packageToUpdate: string) {
     const newDependencies = [];
-    this.dependencies.forEach((pkgVersion) => {
+    this.dependencies.forEach(pkgVersion => {
       if (pkgVersion.dependsOn(packageToUpdate)) {
         newDependencies.push(pkgVersion);
       } else {
@@ -29,10 +32,12 @@ export default class DependencyGraph {
   }
   packagesToUpdate(packageToUpdate: string, version: string): Array<Package> {
     const packagesToUpdate = [];
-    this.dependencies.forEach((pkgVersions) => {
+    this.dependencies.forEach(pkgVersions => {
       let foundPackageVersion;
-      pkgVersions.versions.forEach((pkg) => {
-        const packageToLookFor = pkg.dependencies.find(dep => dep.name === packageToUpdate);
+      pkgVersions.versions.forEach(pkg => {
+        const packageToLookFor = pkg.dependencies.find(
+          dep => dep.name === packageToUpdate
+        );
         if (packageToLookFor) {
           const acceptedRange = semver.validRange(packageToLookFor.version);
           if (acceptedRange) {

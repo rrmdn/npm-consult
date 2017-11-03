@@ -9,27 +9,32 @@ import type {PackageJSONType} from '../utils';
 export default async function checkForUpdate(
   packageDefinition: PackageJSONType
 ) {
-  const { packageToUpdate } = await inquirer.prompt([{
-    type: 'list',
-    name: 'packageToUpdate',
-    message: 'Which package do you want to update?',
-    choices: Object.keys(packageDefinition.dependencies).map(key => ({
-      name: key,
-      value: key,
-    })),
-  }]);
+  const {packageToUpdate} = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'packageToUpdate',
+      message: 'Which package do you want to update?',
+      choices: Object.keys(packageDefinition.dependencies).map(key => ({
+        name: key,
+        value: key,
+      })),
+    },
+  ]);
   console.log('Loading available versions of', packageToUpdate);
   const packageVersionList = await packageVersion(packageToUpdate);
-  const { version } = await inquirer.prompt([{
-    type: 'list',
-    choices: Array.from(packageVersionList).reverse().map(
-      pkgVersion => ({
-        name: `${packageToUpdate}@${pkgVersion}`,
-        value: pkgVersion,
-      })),
-    name: 'version',
-    message: `Which version of ${packageToUpdate} do you want to update to?`,
-  }]);
+  const {version} = await inquirer.prompt([
+    {
+      type: 'list',
+      choices: Array.from(packageVersionList)
+        .reverse()
+        .map(pkgVersion => ({
+          name: `${packageToUpdate}@${pkgVersion}`,
+          value: pkgVersion,
+        })),
+      name: 'version',
+      message: `Which version of ${packageToUpdate} do you want to update to?`,
+    },
+  ]);
   const depsList = Object.keys(packageDefinition.dependencies)
     .map(dependency => [dependency, packageDefinition.dependencies[dependency]])
     .filter(([dependency]) => dependency !== packageToUpdate);
