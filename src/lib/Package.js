@@ -32,7 +32,7 @@ export default class Package {
   }
   dependsOn(packageToUpdate: string): boolean {
     return this.dependencies.length
-      ? this.dependencies.every(pkg => pkg.getName() === packageToUpdate)
+      ? this.dependencies.some(pkg => pkg.getName() === packageToUpdate)
       : false;
   }
 }

@@ -2,16 +2,27 @@
 
 Want to update your package's dependency but too tired to check the availability?
 
-![expanding brain](https://github.com/rromadhoni/npm-consult/raw/master/docs/images/npm-consult.jpeg "Expanding Brain")
+![npm consult demo](https://github.com/rromadhoni/npm-consult/raw/master/consult-demo.gif "npm consult demo")
 
 ## Running NPM Consult
 
-Clone this project and then`cd` to the cloned directory. 
+Clone this project and then `cd` to the cloned directory. 
 
 Run:
 
     $ npm install
-    $ npm run dev    
+    $ npm run dev
+
+### Interactively
+
+Run:
+
+    $ npm start
+
+### Using Arguments
+
+Run:
+
     $ npm start -- update <package>@<version> [-p [package='package.json']]
 
 *For testing, you can specify the package.json file for NPM Consult to
