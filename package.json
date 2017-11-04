@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "babel --watch src --out-dir dist --source-maps --copy-files",
     "dev": "babel src --out-dir dist --source-maps --copy-files",
-    "start": "node dist/index.js"
+    "develop": "babel --watch src --out-dir dist --source-maps --copy-files",
+    "start": "node dist/index.js",
+    "precommit": "lint-staged"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "bluebird": "^3.5.1",
+    "inquirer": "^3.3.0",
     "package-json": "^4.0.1",
     "pkg-versions": "^1.1.0",
     "prompt": "^1.0.0",
@@ -29,6 +32,17 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.57.3"
+    "flow-bin": "^0.57.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.7.4"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "./node_modules/.bin/prettier --write --bracket-spacing=false --single-quote=true --jsx-bracket-same-line=true --trailing-comma=es5 --print-width=80",
+        "git add"
+      ]
+    }
   }
 }
