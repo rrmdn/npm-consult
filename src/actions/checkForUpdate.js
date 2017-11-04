@@ -2,6 +2,7 @@
 
 import inquirer from 'inquirer';
 import packageVersion from 'pkg-versions';
+import chalk from 'chalk';
 import DependencyGraph from '../lib/DependencyGraph';
 
 import type {PackageJSONType} from '../utils';
@@ -40,22 +41,26 @@ export default async function checkForUpdate(
     .filter(([dependency]) => dependency !== packageToUpdate);
   const depsMap = new Map(depsList);
   const dependencyGraph = new DependencyGraph(depsMap);
-  console.log('Building dependency graph...');
+  console.log(chalk.blue('Building dependency graph...'));
   await dependencyGraph.resolveDependencyGraph();
   dependencyGraph.removePackagesWithout(packageToUpdate);
-  const availableUpdates = dependencyGraph.packagesToUpdate(
+  const updateResult = dependencyGraph.packagesToUpdate(
     packageToUpdate,
-    version
+    version,
   );
-  if (availableUpdates.length) {
-    console.log('You can update to', availableUpdates.join(', '));
-  } else {
-    console.log(
-      'Im afraid that you can not update',
-      packageToUpdate,
-      'to version',
-      version
-    );
-  }
+  updateResult.match(
+    (supportedPackages) => {
+      console.log('You can update to these packages');
+      supportedPackages.forEach((pkg) => {
+        console.log(chalk.green(`${pkg.name}@${pkg.version}`));
+      });
+    },
+    (unsupportedPackages) => {
+      console.log(`Can not upgrade to ${packageToUpdate}@${version}, unsupported packages:`);
+      unsupportedPackages.forEach((pkg) => {
+        console.log(chalk.red(`${pkg.name}@${pkg.version}`));
+      });
+    },
+  );
   return true;
 }

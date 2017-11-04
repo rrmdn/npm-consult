@@ -35,4 +35,7 @@ export default class Package {
       ? this.dependencies.some(pkg => pkg.getName() === packageToUpdate)
       : false;
   }
+  copy() {
+    return new Package(this.name, this.version);
+  }
 }
