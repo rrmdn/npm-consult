@@ -1,1 +1,1 @@
-import './src/index';
+require('./dist/index');

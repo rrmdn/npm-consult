@@ -1,8 +1,14 @@
 # NPM Consult
 
-Want to update your package's dependency but too tired to check the availability?
+Manage your NPM Package's dependency with the help of an analyzer.
 
 ![npm consult demo](https://github.com/rromadhoni/npm-consult/raw/master/consult-demo.gif "npm consult demo")
+
+## Installation
+
+```sh
+$ npm install -g npm-consult
+```
 
 ## Develop
 
@@ -10,7 +16,7 @@ Want to update your package's dependency but too tired to check the availability
 2. Run `npm run develop`
 3. On another tab, run `npm start`
 
-## Product Requirements Document
+## About NPM CONSULT
 
 ### Abstract
 
@@ -32,8 +38,12 @@ Managing dependencies is a repetitive task that doing it manually is practically
 NPM Consult helps you analyze your dependency graph and gives you suggestions on which package
 to update or rollback your dependency graph.
 
-### Core Components
+### Roadmap
 
-1. Dependency Analyzer
-2. Update Assistant
+1. Update Assistant
+2. Dependency Analyzer
 3. Rollback Assistant
+
+## License
+
+MIT
