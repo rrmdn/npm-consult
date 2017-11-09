@@ -50,10 +50,14 @@ export default async function checkForUpdate(
   );
   updateResult.match(
     (supportedPackages) => {
-      console.log('You can update to these packages');
-      supportedPackages.forEach((pkg) => {
-        console.log(chalk.green(`${pkg.name}@${pkg.version}`));
-      });
+      if (supportedPackages.length) {
+        console.log('You can update to these packages');
+        supportedPackages.forEach((pkg) => {
+          console.log(chalk.green(`${pkg.name}@${pkg.version}`));
+        });
+      } else {
+        console.log(chalk.green(`You are free to go to ${packageToUpdate}@${version}`));
+      }
     },
     (unsupportedPackages) => {
       console.log(`Can not upgrade to ${packageToUpdate}@${version}, unsupported packages:`);
